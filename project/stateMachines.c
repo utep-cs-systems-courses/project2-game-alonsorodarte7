@@ -2,6 +2,7 @@
 #include "stateMachines.h"
 #include "buzzer.h"
 #include "switches.h"
+#include "led.h"
 
 static short freq = 500;
 static short state2_status = 1;
@@ -53,14 +54,18 @@ void state_up()
   state2_status = 1; red_on = 0; green_on = 1;
   led_changed = 1; led_update();
 }
-
+void state_down()
+{
+  state2_status = 0; red_on = 0; green_on = 1;
+  led_changed = 1; led_update();
+}
 //LED are on 1/x
 void dim_leds(char x)
 {
   static short dimCount = 0;
   switch(dimCount % x)
     {
-    case 0; red_on = 1; green_on = 1; dimCount++; break;
+    case 0: red_on = 1; green_on = 1; dimCount++; break;
     case 1: red_on = 0; green_on = 0; dimCount++; break;
     default: red_on = 0; green_on = 0; dimCount++; break;
     }
@@ -124,7 +129,7 @@ char state4()
 }
 
 //changes states
-void state_advanve()
+void state_advance()
 {
   char changed = 0;
   switch(super_state)
@@ -140,7 +145,7 @@ void state_advanve()
       break;
     case 4:
       changed = state4();
-      break:
+      break;
     }
   led_changed = changed;
   led_update();
