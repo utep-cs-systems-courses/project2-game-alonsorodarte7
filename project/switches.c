@@ -5,7 +5,7 @@
 
 char super_state;
 
-state char
+static char
 switch_update_interrupt_sense()
 {
   char p2val = P2IN;
@@ -38,10 +38,10 @@ switch_interrupt_handler()
   else if( (p2val & SW2) == 0)  // Switch 2 was pressed
     super_state = 2;
 
-  else if( (p2val & SW3) = 0)   // Switch 3 was pressed
+  else if( (p2val & SW3) == 0)   // Switch 3 was pressed
     super_state = 3;
 
-  else if( (p2val & SW4) = 0)   // Switch 4 was pressed
+  else if( (p2val & SW4) == 0)   // Switch 4 was pressed
     super_state = 4;
 }
 

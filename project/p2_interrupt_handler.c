@@ -3,7 +3,7 @@
 
 /* Switches on P2 */
 void
-_interrupt_vec(PORT2_VECTOR) Port_2()
+__interrupt_vec(PORT2_VECTOR) Port_2()
 {
   if(P2IFG & SWITCHES) /* Did a button cause this interrupts */
     {
