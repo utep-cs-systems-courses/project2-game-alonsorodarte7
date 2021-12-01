@@ -51,7 +51,7 @@ void buzzer_advance()
 
 void state_up()
 {
-  state2_status = 1; red_on = 0; green_on = 1;
+  state2_status = 1; red_on = 1; green_on = 0;
   led_changed = 1; led_update();
 }
 void state_down()
@@ -113,7 +113,7 @@ char state3()
     case 1: dim_leds(2); buzzer_set_period(500); break;
     case 2: dim_leds(3); buzzer_set_period(1500); break;
     case 3: dim_leds(4); buzzer_set_period(6000); break;
-    case 4: dim_leds(8); buzzer_set_period(0); stateS3; break;
+    case 4: dim_leds(8); buzzer_set_period(0); stateS3 = 0; break;
   }
 }
 
